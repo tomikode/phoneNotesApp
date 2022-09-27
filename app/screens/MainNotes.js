@@ -1,33 +1,23 @@
-import {
-	FlatList,
-	ScrollView,
-	StatusBar,
-	StyleSheet,
-	Text,
-	View,
-} from "react-native";
-import React from "react";
+import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import React, { useEffect, useState } from "react";
 import NotePreview from "../components/NotePreview";
 import notes from "../../notes.json";
+import colors from "../util/colors";
 
-const MainNotes = () => {
-	const renderNote = ({ item }) => {
-		return <NotePreview title={item.title} desc={item.desc} />;
-		// return <Text>Test</Text>;
-	};
+const MainNotes = ({ navigation }) => {
+	const [notes, setNotes] = useState([]);
+
 	return (
-		<View style={styles.safe}>
+		<View style={styles.container}>
 			<ScrollView>
-				<Text style={styles.appTitle}>Notes</Text>
-				{/* <FlatList
-					style={styles.container}
-					data={notes}
-					renderItem={renderNote}
-					numColumns={2}
-				/> */}
 				<View style={styles.list}>
 					{notes.map((note) => (
-						<NotePreview title={note.title} desc={note.desc} />
+						<NotePreview
+							key={note.id}
+							note={note}
+							noteList={notes}
+							navigation={navigation}
+						/>
 					))}
 				</View>
 			</ScrollView>
@@ -38,10 +28,8 @@ const MainNotes = () => {
 export default MainNotes;
 
 const styles = StyleSheet.create({
-	safe: {
-		paddingTop: StatusBar.currentHeight,
-		backgroundColor: "red",
-		height: "100%",
+	container: {
+		backgroundColor: colors.dark,
 	},
 	appTitle: {
 		fontSize: 40,

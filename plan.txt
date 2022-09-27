@@ -1,0 +1,5 @@
+1. make components
+2. create screens for main page, view note, search?
+3. CRUD on notes
+4. find out how to save data locally on phones
+5. make app look nice

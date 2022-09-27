@@ -1,15 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import colors from "../colors";
+import colors from "../util/colors";
 
-const NotePreview = ({ title, desc }) => {
+const NotePreview = ({ note, noteList, navigation }) => {
+	const openNote = () => {
+		navigation.navigate("ViewNote", { note, noteList });
+	};
+
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity onPress={openNote} style={styles.container}>
 			<View style={styles.note}>
-				<Text style={styles.heading}>{title}</Text>
-				<Text style={styles.desc}>{desc}</Text>
+				<Text style={styles.heading}>{note.title}</Text>
+				<Text style={styles.desc}>{note.desc}</Text>
 			</View>
-		</View>
+		</TouchableOpacity>
 	);
 };
 
@@ -21,11 +25,15 @@ const styles = StyleSheet.create({
 	},
 	note: {
 		borderWidth: 2,
-		borderColor: colors.black,
+		borderColor: colors.light,
 		height: 200,
-		margin: 5,
+		margin: 7,
 	},
 	heading: {
+		color: colors.light,
 		fontSize: 25,
+	},
+	desc: {
+		color: colors.light,
 	},
 });

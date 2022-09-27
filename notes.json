@@ -1,29 +1,36 @@
     [
         {
+            "id": 1,
             "title": "Note1",
             "desc": "Remember to go hit gym"
         },
         {
+            "id": 2,
             "title": "Note2",
             "desc": "Discipline is essential"
         },
         {
+            "id": 3,
             "title": "Note3",
             "desc": "Dont be a pussy"
         },
         {
+            "id": 4,
             "title": "Note4",
             "desc": "Drink protein"
         },
         {
+            "id": 5,
             "title": "Note5",
             "desc": "Be a sick kunt"
         },
         {
+            "id": 6,
             "title": "Note6",
             "desc": "Get sleep"
         },
         {
+            "id": 7,
             "title": "Note7",
             "desc": "Drink water"
         }
