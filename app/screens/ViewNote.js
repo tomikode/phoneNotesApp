@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -8,7 +8,7 @@ const ViewNote = ({ route, navigation }) => {
 
 	const changeTitle = (text) => {
 		setNote({ ...note, title: text });
-		noteList = noteList.filter((one) =>
+		noteList = noteList.map((one) =>
 			one.id === note.id ? { ...note, title: text } : one
 		);
 		saveChanges();
@@ -16,7 +16,7 @@ const ViewNote = ({ route, navigation }) => {
 
 	const changeDesc = (text) => {
 		setNote({ ...note, desc: text });
-		noteList = noteList.filter((one) =>
+		noteList = noteList.map((one) =>
 			one.id === note.id ? { ...note, desc: text } : one
 		);
 		saveChanges();
@@ -25,7 +25,9 @@ const ViewNote = ({ route, navigation }) => {
 	const saveChanges = async () => {
 		const data = JSON.stringify(noteList);
 		try {
-			await AsyncStorage.setItem("noteList", data);
+			console.log(data);
+			await AsyncStorage.setItem("notes", data);
+			console.log("saved");
 		} catch (e) {
 			console.log(e);
 		}

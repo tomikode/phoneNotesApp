@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
 	note: {
 		borderWidth: 2,
 		borderColor: colors.light,
+		borderRadius: 10,
 		height: 200,
 		margin: 7,
 	},
